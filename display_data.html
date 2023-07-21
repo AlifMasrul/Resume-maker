@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Display Data</title>
+  <link rel="stylesheet" href="display_data.css" />
+</head>
+
+<body>
+  <h1>Submitted Form Data</h1>
+  <div class="border">
+    <div id="displayData"></div>
+  </div>
+
+  <script>
+    // Function to display form data
+    function displayFormData() {
+      const displayDiv = document.getElementById("displayData");
+
+      // Retrieve the form data from local storage
+      const formData = JSON.parse(localStorage.getItem("formData"));
+
+      // Check if form data exists in local storage
+      if (formData) {
+        // Create an HTML string to display the form data
+        let formDataHTML = `
+          <div class="profile-picture">
+            <img src="${formData.profilePicture}" alt="Profile Picture" style="max-width: 150px;" />
+          </div>
+          <h3>Profile</h3>
+          <div class="profile-info">
+            <ul>
+              <li><p><strong>First Name:</strong> ${formData.firstName}</p></li>
+              <li><p><strong>Last Name:</strong> ${formData.lastName}</p></li>
+              <li><p><strong>Email:</strong> ${formData.email}</p></li>
+              <li><p><strong>Phone Number:</strong> ${formData.phoneNo}</p></li>
+              <li><p><strong>Street Address:</strong> ${formData.streetAddress}</p></li>
+              <li><p><strong>City:</strong> ${formData.city}</p></li>
+              <li><p><strong>Postal Code:</strong> ${formData.postalCode}</p></li>
+              <li><p><strong>Country:</strong> ${formData.country}</p></li>
+            </ul>
+          </div>
+        `;
+
+        // Check if formData.education is defined and not null before using trim and toLowerCase
+        if (formData.education?.trim().toLowerCase() !== "none") {
+          formDataHTML += `<h3>Education:</h3>`;
+          formDataHTML += `<div class="edu">`;
+          formDataHTML += `<ul>`;
+          formDataHTML += `<li><p><strong>SPM:</strong> ${formData.spm}</p></li>`;
+          formDataHTML += `<li><p><strong>Diploma:</strong> ${formData.diploma}</p></li>`;
+          formDataHTML += `<li><p><strong>Degree:</strong> ${formData.degree}</p></li>`;
+          formDataHTML += `</div>`;
+          formDataHTML += `</ul>`;
+        }
+
+        if (formData.work && formData.work.length > 0) {
+          // Add "Work Experience" heading
+          formDataHTML += `<h3>Work Experience:</h3>`;
+          formDataHTML += `<div class='work'>`;
+          formDataHTML += `<ul>`;
+          // Loop through the "work" lines and add them to the HTML string
+          for (let i = 0; i < formData.work.length; i++) {
+            formDataHTML += `<li><p>${formData.work[i]}</p></li>`;
+          }
+          formDataHTML += `</div>`;
+          formDataHTML += `</ul>`;
+        } else {
+          // No work experience data found
+          formDataHTML += `<p>No work experience data found.</p>`;
+        }
+
+        // Set the HTML content to the displayData div
+        displayDiv.innerHTML = formDataHTML;
+      } else {
+        // No form data found
+        displayDiv.innerHTML = "<p>No form data found.</p>";
+      }
+    }
+
+    // Call the displayFormData function when the page loads
+    window.onload = displayFormData;
+  </script>
+</body>
+
+</html>

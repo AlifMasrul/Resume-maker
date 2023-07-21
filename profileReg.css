@@ -1,0 +1,116 @@
+/* Set a fixed height for the custom dropdown */
+.custom-select {
+    position: relative;
+    display: inline-block;
+    height: 150px;
+    /* Adjust the height as needed */
+    overflow: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+/* Remove default dropdown style */
+.custom-select select {
+    display: none;
+}
+
+/* Style for the custom dropdown option */
+.custom-select option {
+    padding: 8px 12px;
+}
+
+body {
+    background-color: rgb(131, 131, 184);
+}
+
+label {
+    display: inline-block;
+    width: 150px;
+}
+
+textarea,
+input[type="text"] {
+    width: 300px;
+    padding: 5px;
+}
+
+textarea {
+    vertical-align: top;
+}
+
+.container{
+    display: inline-block; /* This will make the border wrap tightly around the #displayData content */
+    padding: 10px; /* Add some padding for a visually balanced appearance */
+    /*border: 1px solid #ccc; Set the border size and color */
+    margin: 50px;
+    margin-left: 400px;
+}
+
+.border {
+    margin-top: 30px;
+    padding: 30px;
+    border: none;
+    background-color: #f9f9f9;
+    border-radius: 25px;
+    color: black;
+}
+
+input{
+    background-color: gray;
+    color: white;
+    border-radius: 50px;
+    border: none;
+}
+
+textarea{
+    background-color: gray;
+    color: white;
+    border-radius: 20px;
+    border: none;
+}
+
+input::placeholder{
+    font-style: italic;
+    color: white;
+    padding-left: 5px
+}
+
+textarea::placeholder{
+    font-style: italic;
+    color: white;
+    padding-left: 5px;
+    font-size: 13px;
+}
+
+select{
+    background-color: gray;
+    color: white;
+    border-radius: 20px;
+    border: none;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+}
+
+#email{
+    padding: 5px;
+}
+
+.submit{
+    background-color: rgb(45, 240, 71);
+    color: white;
+    border-radius: 25px;
+    border:none;
+    padding: 10px;
+    margin-left: 120px;
+}
+
+.cancel{
+    background-color: red;
+    color: white;
+    border-radius: 25px;
+    border: none;
+    padding: 10px;
+    margin-left: 50px;
+}
